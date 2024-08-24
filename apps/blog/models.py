@@ -16,6 +16,8 @@ class Category(models.Model):
     class Meta:
         db_table = 'Category'
         ordering = ['name']
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
         
 
 
@@ -23,7 +25,7 @@ class Article(models.Model):
     title = models.CharField(verbose_name='Título', max_length=100, blank=False, null=False, unique=True)
     pub_date = models.DateField(default=date.today)
     content = models.TextField(verbose_name='Contenido', blank=False, null=False)
-    category_id = models.ForeignKey('Category', on_delete=models.RESTRICT, related_name='category')
+    category_id = models.ForeignKey('Category', on_delete=models.RESTRICT, related_name='article')
     
     def __str__(self):
         return self.title

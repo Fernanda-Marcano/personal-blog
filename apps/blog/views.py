@@ -68,6 +68,16 @@ def list_article(request):
     return render(request, 'article/list.html', context)
 
 
+def list_category_article(request, id):
+    category_id = Category.objects.get(id=id)
+    articles = category_id.article.all()
+    context = {
+        'category_id':category_id,
+        'articles':articles,
+    }
+    return render(request, 'article/category_article.html', context)
+
+
 def edit_article(request, id):
     article_id = Article.objects.get(id=id)
     if request.method == 'POST': 
