@@ -1,13 +1,13 @@
 {% extends '../layouts/base.html' %}
 
 
-{% block title %}Articulos{% endblock title %}
+{% block title %}{{ category_id }}{% endblock title %}
 
 
 {% block content %}
     <ul>
         {% for article in articles %}
-            <li>{{ article }} <a href="{% url 'edit-article' article.id %}">editar</a></li>
+            <li>{{ article }}</li>
         {% endfor %}
     </ul>
 {% endblock content %}

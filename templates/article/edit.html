@@ -1,0 +1,30 @@
+{% extends '../layouts/base.html' %}
+
+
+{% block title %} Article Edit {% endblock title %}
+
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="content">
+            <div class="form__inputs">
+                <label for="">{{ form_article.title.label_tag }}</label>
+                {{ form_article.title }}
+            </div>
+            <div class="form__inputs">
+                <label for="">{{ form_article.pub_date.label_tag }}</label>
+                {{ form_article.pub_date }}
+            </div>
+            <div class="form__inputs">
+                <label for="">{{ form_article.content.label_tag }}</label>
+                {{ form_article.content }}
+            </div>
+            <div class="form__inputs">
+                <label for="">{{ form_article.category_id.label_tag }}</label>
+                {{ form_article.category_id }}
+            </div>
+            <input type="submit" value="Crear">
+        </div>
+    </form>
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends '../layouts/base.html' %}
+
+
+{% block title %} Lista Categorias {% endblock title %}
+
+
+{% block content %}
+    <ul>
+        {% for category in categories %}
+            <li><a href="{% url 'list-cat-art' id=category.id %}">{{ category }}</a> 
+                <a href="{% url 'edit-category' category.id %}">editar</a></li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

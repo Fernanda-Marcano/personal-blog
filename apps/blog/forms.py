@@ -7,10 +7,13 @@ class CategoryForm(ModelForm):
     class Meta:
         model = Category
         fields = ['name']
+        labels = {
+            'name':'Nombre de la Categoría'
+        }
 
 
 class ArticleForm(ModelForm):
-    category_id = forms.ModelChoiceField(queryset=Category.objects.all(), empty_label=None)
+    category_id = forms.ModelChoiceField(queryset=Category.objects.all(), empty_label=None, label='Categoría')
     class Meta:
         model = Article
         fields = ['title', 'pub_date', 'content', 'category_id']
