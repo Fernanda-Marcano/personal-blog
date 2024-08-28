@@ -5,10 +5,22 @@
 
 
 {% block content %}
-    <ul>
-        {% for category in categories %}
-            <li><a href="{% url 'list-cat-art' id=category.id %}">{{ category }}</a> 
-                <a href="{% url 'edit-category' category.id %}">editar</a></li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <div class="row">
+            {% for category in categories %}                
+                <div class="col py-3">
+                    <div class="card color" style="width: 20rem;">
+                        <img src="{{ category.image.url }}" class="card-img-top" style="width: 100%; height: 200px;" alt="{{ category.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ category.name }}</h5>
+                            <p class="card-text">Some quick he bulk of the card's content.</p>
+                        </div>
+                        <div class="card-body">
+                            <a href="{% url 'list-cat-art' id=category.id %}" class="card-link">Ver Categoria</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}            
+        </div>
+    </div>
 {% endblock content %}

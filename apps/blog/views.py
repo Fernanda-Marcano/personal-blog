@@ -6,7 +6,7 @@ from .forms import CategoryForm, ArticleForm
 # =================== Creating views of Category ==============
 def create_category(request):
     if request.method == 'POST':
-        form_category = CategoryForm(request.POST or None)
+        form_category = CategoryForm(request.POST, request.FILES)
         if form_category.is_valid():
             form_category.save()
             return HttpResponse('Funciona Correctamente')
@@ -28,7 +28,7 @@ def list_category(request):
 def edit_category(request, id):
     category_id = Category.objects.get(id=id)
     if request.method == 'POST':
-        form_category = CategoryForm(request.POST or None, instance=category_id)
+        form_category = CategoryForm(request.POST, request.FILES, instance=category_id)
         if form_category.is_valid():
             form_category.save()
             return HttpResponse(f'La categoria {category_id} fue editada correctamente')

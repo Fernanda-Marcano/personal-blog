@@ -1,7 +1,26 @@
-<ul>
-    <li><a href="{% url 'list-category' %}">Home</a></li>
-    <li><a href="{% url 'create-category' %}">Categorias crear</a></li>
-    <li><a href="{% url 'create-article' %}">Crear Articulo</a></li>
-    <li><a href="{% url 'list-article' %}">lista articulos</a></li>
-</ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'list-category' %}">Personal Blog</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'list-category' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'create-category' %}">Categorias crear</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'create-article' %}">Crear Articulo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'list-article' %}">lista articulos</a>
+            </li>
+        </ul>
+        <form class="d-flex">
+            <a class="btn btn-outline-success" type="submit">Configuraticion</a>
+        </form>
+    </div>
+</nav>
 
