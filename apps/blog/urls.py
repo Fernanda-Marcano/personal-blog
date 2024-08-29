@@ -12,6 +12,7 @@ urlpatterns = [
     path('article/create/', views.create_article, name='create-article'), 
     path('article/list/', views.list_article, name='list-article'), 
     path('article/list-cat-art/<int:id>/', views.list_category_article, name='list-cat-art'),
-    path('article/edit/<int:id>/', views.edit_article, name='edit-article'), 
+    path('article/edit/<int:id>/', views.edit_article, name='edit-article'),
+    path('article/detail/<int:id>/', views.detail_article, name='detail-article'),
     path('article/delete/<int:id>/', views.delete_article, name='delete-article'), 
 ]

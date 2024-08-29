@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.contrib import messages
 from .models import Category, Article
 from .forms import CategoryForm, ArticleForm
 
@@ -9,9 +9,11 @@ def create_category(request):
         form_category = CategoryForm(request.POST, request.FILES)
         if form_category.is_valid():
             form_category.save()
-            return HttpResponse('Funciona Correctamente')
+            messages.success(request, 'Categoría creada con éxito')
+            return redirect(to='list-category')
         else:
-            return HttpResponse('Ha ocurrido un error')
+            messages.error(request, 'Ha ocurrido un error')
+            return redirect(to='list-category')
     form_category = CategoryForm()
     context = {
         'category':form_category,
@@ -31,9 +33,11 @@ def edit_category(request, id):
         form_category = CategoryForm(request.POST, request.FILES, instance=category_id)
         if form_category.is_valid():
             form_category.save()
-            return HttpResponse(f'La categoria {category_id} fue editada correctamente')
+            messages.success(request, 'Categoría actualizada con éxito')
+            return redirect(to='list-category')
         else:
-            return HttpResponse('No se pudo editar la categoria')
+            messages.error(request, 'Ha ocurrido un error')
+            return redirect(to='list-category')
     form_category = CategoryForm(instance=category_id)
     context = {
         'category':form_category,
@@ -44,6 +48,7 @@ def edit_category(request, id):
 def delete_category(request, id):
     category_id = Category.objects.get(id=id)
     category_id.delete()
+    messages.success(request, 'Categoría eliminada correctamente')
     return redirect(to='list-category')
 
 
@@ -54,9 +59,11 @@ def create_article(request):
         form_article = ArticleForm(request.POST or None)
         if form_article.is_valid():
             form_article.save()
-            return HttpResponse('Articulo agregado correctamente')
+            messages.success(request, 'Artículo creado con éxito')
+            return redirect(to='list-article')
         else:
-            return HttpResponse('Ha ocurrido un error al crear el articulo')
+            messages.error(request, 'Ha ocurrido un error')
+            return redirect(to='list-article')
     form_article = ArticleForm()
     context = {'form_article':form_article}
     return render(request, 'article/create.html', context)
@@ -84,9 +91,11 @@ def edit_article(request, id):
         form_article = ArticleForm(request.POST or None, instance=article_id)
         if form_article.is_valid():
             form_article.save()
-            return redirect(to='list-category')
+            messages.success(request, 'Artículo actualizado con éxito')
+            return redirect(to='list-article')
         else:
-            return HttpResponse('No se pudo editar el articulo')
+            messages.error(request, 'Ha ocurrido un error')
+            return redirect(to='list-article')
     form_article = ArticleForm(instance=article_id)
     context = {
         'form_article':form_article
@@ -103,4 +112,5 @@ def detail_article(request, id):
 def delete_article(request, id):
     article_id = Article.objects.get(id=id)
     article_id.delete()
-    return redirect(to='list-category')
+    messages.success(request, 'Artículo eliminado correctamente')
+    return redirect(to='list-article')

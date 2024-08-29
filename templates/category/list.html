@@ -1,12 +1,15 @@
 {% extends '../layouts/base.html' %}
 
 
-{% block title %} Lista Categorias {% endblock title %}
+{% block title %} Lista Categorías {% endblock title %}
 
 
 {% block content %}
     <div class="container">
-        <a class="btn btn-outline-info mt-4" href="{% url 'create-category' %}" role="button">Crear Nueva Categoria</a>
+        <h2 class="text-center text-light list-title">LISTA DE CATEGORÍAS</h2>
+        <a class="btn btn-outline-info mt-4" href="{% url 'create-category' %}" role="button">
+            <i class="fa fa-plus-circle" style="font-size:20px;"></i>
+            Crear Nueva Categoría</a>
         <div class="row">
             {% for category in categories %}                
                 <div class="col py-3">
@@ -18,15 +21,21 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col">
-                                    <a href="{% url 'list-cat-art' id=category.id %}" class="card-link">Ver Categoria</a>
+                                <div class="col text-center">
+                                    <a href="{% url 'list-cat-art' id=category.id %}" class="card-link">
+                                        <i class="fa fa-eye" style="font-size:24px; color:#000"></i>
+                                    </a>
                                 </div>
-                                <div class="col">
-                                    <a href="{% url 'edit-category' id=category.id %}" class="card-link">Editar Categoria</a>
+                                <div class="col text-center">
+                                    <a href="{% url 'edit-category' id=category.id %}" class="card-link">
+                                        <i class="fa fa-pencil-square-o" style="font-size:24px; color:#000"></i>
+                                    </a>
                                 </div>
-                                <div class="col">
+                                <div class="col text-center ">
                                     <a href="{% url 'delete-category' id=category.id %}" class="card-link"
-                                    onclick="return(alert('Seguro desea eliminar {{ category.name }}?'))">Eliminar Categoria</a>
+                                    onclick="return(alert('Seguro desea eliminar {{ category.name }}?'))">
+                                    <i class="fa fa-trash-o" style="font-size:24px; color:#000"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>

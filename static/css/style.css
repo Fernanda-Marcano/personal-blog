@@ -42,3 +42,20 @@ body {
     background: transparent;
     color: #000;
 }
+
+.list-title {
+    font-size: 3rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.detail {
+    margin: auto;
+    background: transparent;
+    border: none;
+    font-size: 22px;
+}
+
+.detail-title {
+    font-size: 4rem;
+    text-align: center;
+}

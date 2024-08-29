@@ -1,0 +1,17 @@
+{% extends '../layouts/base.html' %}
+
+
+{% block title %} {{article.title}} {% endblock title %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="card my-4 detail text-light" style="width: 55rem;">
+            <div class="card-body">
+                <h3 class="card-title detail-title">{{ article.title | upper }}</h3>
+                <p class="fecha">{{ article.pub_date }} | {{ article.category_id | upper }}</p>
+                <p class="card-text">{{ article.content }}</p>
+                </div>
+        </div>
+    </div>
+{% endblock content %}
