@@ -5,26 +5,31 @@
 
 
 {% block content %}
-    <form action="" method="post">
-        {% csrf_token %}
-        <div class="content">
-            <div class="form__inputs">
-                <label for="">{{ form_article.title.label_tag }}</label>
-                {{ form_article.title }}
-            </div>
-            <div class="form__inputs">
-                <label for="">{{ form_article.pub_date.label_tag }}</label>
-                {{ form_article.pub_date }}
-            </div>
-            <div class="form__inputs">
-                <label for="">{{ form_article.content.label_tag }}</label>
-                {{ form_article.content }}
-            </div>
-            <div class="form__inputs">
-                <label for="">{{ form_article.category_id.label_tag }}</label>
-                {{ form_article.category_id }}
-            </div>
-            <input type="submit" value="Crear">
+<div class="container">
+    <div class="card text-left mt-5 center text-light" style="width: 30rem;">
+        <div class="card-header text-center">
+            <h4>Crear Articulo</h4>
         </div>
-    </form>
+        <div class="card-body">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group row">
+                    {% for article in form_article %}
+                        <div class="col-sm-12 mt-1">
+                            {{ article.label_tag }}
+                            {{ article }}
+                            {% if article.errors %}
+                                {% for error in article.errors%}
+                                    <p class="help-block text-danger">{{ error }}</p>
+                                {% endfor %}
+                            {% endif %}
+                            
+                        </div>
+                    {% endfor %}
+                </div>
+                <button type="submit" class="btn btn-outline-success" style="width: 100%;">Crear</button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock content %}

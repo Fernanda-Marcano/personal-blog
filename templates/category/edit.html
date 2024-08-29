@@ -5,10 +5,32 @@
 
 
 {% block content %}
-    <form action="" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-            {{ category }}
-        <input type="submit" value="Crear">
-    </form>
+    <div class="container">
+        <div class="card text-left mt-5 center text-light" style="width: 30rem;">
+            <div class="card-header text-center">
+                <h4>Crear Categoria</h4>
+            </div>
+            <div class="card-body">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        {% for cat in category %}
+                            <div class="col-sm-12">
+                                {{ cat.label_tag }}
+                                {{ cat }}
+                                {% if cat.errors %}
+                                    {% for error in cat.errors%}
+                                        <p class="help-block text-danger">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                                
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <button type="submit" class="btn btn-outline-success" style="width: 100%;">Crear</button>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
 

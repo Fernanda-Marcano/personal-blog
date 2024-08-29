@@ -1,12 +1,44 @@
 body {
-    background: rgb(3, 49, 65);
+    background: #242829;
 }
 
 
 .color {
-    background: rgb(119, 180, 230);
+    background: #77b4e6;
 }
 
 .color:hover {
     box-shadow: 10px 10px 15px #000;
+}
+
+.center {
+    padding: 0;
+    margin: 0;
+    margin: auto;
+    background: transparent;
+    /* border: 1px solid #fff; */
+    box-shadow: 0 0 5px #fff;
+}
+
+.fecha {
+    font-size: 12px;
+}
+
+.boton-list {
+    margin-left: 12rem;
+}
+
+.form-control {
+    background: transparent;
+    color: #fff;
+}
+
+.form-control:focus-visible {
+    background: transparent;
+    color: #fff;
+}
+
+.form-control:focus-visible[name='category_id'] {
+    background: transparent;
+    color: #000;
 }

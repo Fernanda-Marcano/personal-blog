@@ -5,9 +5,17 @@
 
 
 {% block content %}
-    <ul>
+    <div class="container">
+        <a class="btn btn-outline-info mt-4 boton-list" href="{% url 'create-article' %}" role="button">Crear Nuevo Articulo</a>
         {% for article in articles %}
-            <li>{{ article }} <a href="{% url 'edit-article' article.id %}">editar</a></li>
+        <div class="card mt-4 center text-light" style="width: 45rem;">
+            <div class="card-body">
+                <h3 class="card-title">{{ article.title }}</h3>
+                <p class="fecha">{{ article.pub_date }}</p>
+                <p class="card-text">{{ article.content }}</p>
+                <a href="#" class="btn btn-outline-info">Leer mas....</a>
+                </div>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 {% endblock content %}

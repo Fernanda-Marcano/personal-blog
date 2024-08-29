@@ -11,6 +11,11 @@ class CategoryForm(ModelForm):
             'name':'Nombre de la Categoría', 
             'image':'Imagen',
         }
+        error_messages = {
+            'name':{
+                'max_length':'Este campo es requerido',
+            }
+        }
         widgets = {
             'name':forms.TextInput(attrs={'class':'form-control'}),
             'image':forms.FileInput(attrs={'class':'form-control-file'})
