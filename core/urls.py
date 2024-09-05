@@ -6,8 +6,9 @@ from apps.blog import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('blog/', include('apps.blog.urls'), name='blog'), 
-    path('', views.list_category, name='home')
+    path('', views.list_category, name='home'), 
 ]
 
 if settings.DEBUG:

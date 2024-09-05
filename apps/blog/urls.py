@@ -4,7 +4,7 @@ from . import views
 urlpatterns = [
     #URLs of Categories
     path('category/create/', views.create_category, name='create-category'),
-    path('category/list/', views.list_category, name='list-category'), 
+    path('category/list/', views.list_category), 
     path('category/edit/<int:id>/', views.edit_category, name='edit-category'), 
     path('category/delete/<int:id>/', views.delete_category, name='delete-category'),
     
@@ -15,4 +15,6 @@ urlpatterns = [
     path('article/edit/<int:id>/', views.edit_article, name='edit-article'),
     path('article/detail/<int:id>/', views.detail_article, name='detail-article'),
     path('article/delete/<int:id>/', views.delete_article, name='delete-article'), 
+    
+    path('logout/', views.exit, name='exit')
 ]

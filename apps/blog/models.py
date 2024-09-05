@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import date
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -26,6 +27,7 @@ class Article(models.Model):
     title = models.CharField(verbose_name='Título', max_length=100, blank=False, null=False, unique=True)
     pub_date = models.DateField(default=date.today)
     content = models.TextField(verbose_name='Contenido', blank=False, null=False)
+    user = models.ForeignKey(User, verbose_name='Usuario', on_delete=models.RESTRICT)
     category_id = models.ForeignKey('Category', verbose_name='Categoría', on_delete=models.RESTRICT, related_name='article')
     
     def __str__(self):
